@@ -131,9 +131,18 @@ RQ: To what extent does Linux x86_64 instructions have equivalents in Fedora Lin
 
 ### Evaluating Methodology
 
-- Performance Benchmarking using [`sysbench`](https://github.com/akopytov/sysbench)
-  The CPU, memory, and file I/O performance is benchmarked for both the emulated and bare-metal x86_64.
-- Literature Review and Analyses
-- Case Study: QEMU
-- Synthesis
-- Comparing x86_64 and aarch64 binary of the same C code.
+- Benchmark Analysis
+  The CPU, memory, and file I/O performance is benchmarked for both the emulated and bare-metal x86_64, using [`sysbench`](https://github.com/akopytov/sysbench) by running a binary from the same source code compiled for both system.
+  (Initial Research) From looking at the [issues in the Github](https://github.com/akopytov/sysbench/issues), there are some problems related to the CPU benchmarking and MySQL/MariaDB
+  In order to achieve reliable results, the software of tested machines: operating system and software versions are the same.
+- Binary Translation Framework Analysis
+  Focusing on performance overhead, emulate x86_64 on an aarch64 system and comparing it's performance and correctness to native x86_64.
+	Translation frameworks performance are different. Some might be faster on a specific case but slower on another.
+	The sources are from own experiments, but (TODO: use better word) 'unprofessional' researcher might makes mistake that impact the experiments data.
+	The base performance Mac M1 might be higher than (TODO: rename) x86_86 system. Some translations might not work or the instruction does not have equivalents.
+- Comparative Analysis
+  Determine equivalent for each instruction in a representative set of instructions from x86_64 and aarch64 that is commonly used in Linux, while also analyze the differences in instruction semantics, operand types, and encoding between the two ISAs and Identify instructions that have no direct equivalents and require more complex translation or emulation.
+	The documentation of x86_64 and aarch64 is extensive and exhaustive, but the different versions of x86_64/aarch64 ISA will impact the result. Might be time consuming, and is only static analysis which disregard performance implications.
+	The source is first-hand from documentations in the official x86_64 and aarch64 website.
+- Literature Review and Analyses [1](https://bodhibloom.com/aarch64-vs-x86/) [2](https://paracr4ckbeginnings.wordpress.com/2014/10/03/comparing-x86_64-and-aarch64-assembly-which-do-you-prefer/) [3](https://itsfoss.com/arm-aarch64-x86_64/j) [4](https://www.redhat.com/en/topics/linux/ARM-vs-x86)
+- Case studies: 
