@@ -1,5 +1,7 @@
 # Computer Science Extended Essay:
 
+Structure: introduction, background information, methodology, result & analysis, conclusion, bibliography.
+
 ## Investigating the Linux x86_64 and Linux aarch64 ISA differences in the context of ISA translation technology
 
 ## Introduction
